@@ -46,6 +46,14 @@ public class DhanProperties {
      */
     private int cacheTtlSeconds = 30;
 
+    /**
+     * Separate, shorter cache TTL for orders only.
+     * Orders change immediately after a buy/sell is placed, so they need a much
+     * shorter TTL than trades/positions. Defaults to 3 s so new orders appear
+     * within ~3 seconds on the UI even with aggressive auto-refresh.
+     */
+    private int ordersCacheTtlSeconds = 3;
+
     public boolean isEnabled() {
         return enabled;
     }
@@ -188,6 +196,14 @@ public class DhanProperties {
 
     public void setCacheTtlSeconds(int cacheTtlSeconds) {
         this.cacheTtlSeconds = cacheTtlSeconds;
+    }
+
+    public int getOrdersCacheTtlSeconds() {
+        return ordersCacheTtlSeconds;
+    }
+
+    public void setOrdersCacheTtlSeconds(int ordersCacheTtlSeconds) {
+        this.ordersCacheTtlSeconds = ordersCacheTtlSeconds;
     }
 
     public boolean isAutoExitOnLimit() {

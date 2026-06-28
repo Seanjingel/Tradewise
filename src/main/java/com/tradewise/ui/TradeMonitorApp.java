@@ -818,8 +818,8 @@ public class TradeMonitorApp extends Application {
         refreshBtn.setOnAction(event -> handleManualRefresh());
 
         refreshIntervalBox = new ComboBox<>();
-        refreshIntervalBox.getItems().addAll("1s", "2s", "5s", "Manual");
-        refreshIntervalBox.setValue("5s");
+        refreshIntervalBox.getItems().addAll("1s", "2s", "3s", "5s", "Manual");
+        refreshIntervalBox.setValue("2s");
         refreshIntervalBox.setPrefWidth(110);
         refreshIntervalBox.setOnAction(event -> applyAutoRefreshMode(refreshIntervalBox.getValue()));
 
@@ -861,7 +861,7 @@ public class TradeMonitorApp extends Application {
         try {
             intervalSeconds = Double.parseDouble(mode.replace("s", ""));
         } catch (NumberFormatException ex) {
-            intervalSeconds = 5.0;
+            intervalSeconds = 2.0;
         }
 
         final int intervalInt = (int) intervalSeconds;
@@ -1154,7 +1154,7 @@ public class TradeMonitorApp extends Application {
         if (killSwitchBtn != null) {
             killSwitchBtn.setDisable(false);
         }
-        applyAutoRefreshMode(refreshIntervalBox != null ? refreshIntervalBox.getValue() : "5s");
+        applyAutoRefreshMode(refreshIntervalBox != null ? refreshIntervalBox.getValue() : "2s");
     }
 
     private void setLoggedOutState() {

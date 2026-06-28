@@ -206,7 +206,7 @@ public class DhanTradeClient implements ExternalTradeClient {
     public List<OrderResponse> fetchOrders() {
         validateConfiguration();
 
-        long cacheTtlMs = dhanProperties.getCacheTtlSeconds() * 1000L;
+        long cacheTtlMs = dhanProperties.getOrdersCacheTtlSeconds() * 1000L;
         List<OrderResponse> cached = cachedOrders.get();
         if (cached != null && (System.currentTimeMillis() - ordersCachedAt) < cacheTtlMs) {
             log.debug("Returning cached orders (age {}ms, TTL {}ms)", System.currentTimeMillis() - ordersCachedAt, cacheTtlMs);
